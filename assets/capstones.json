@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "routes": [
+    {
+      "id": "foundations",
+      "course": "cryptography-site-learn/courses/d01-foundations/",
+      "title_zh": "路线一：从一段密文到一份威胁模型",
+      "title_en": "Route 1: From a ciphertext to a threat model",
+      "desc_zh": "把“基础与古典”五门课收束成一份可以给别人看的破译与风险评估报告。",
+      "desc_en": "Turn the five Foundations & Classical courses into a break-and-risk report you can show someone else.",
+      "deliverable_zh": "一份 6–10 页报告：密文样本、频率表、破译过程、失败尝试、威胁模型与三条修复建议。",
+      "deliverable_en": "A 6–10 page report: ciphertext sample, frequency table, break process, failed attempts, threat model and three fixes.",
+      "steps_zh": ["选一段 200 字以上的单表替换密文。", "记录频率表、候选字母映射与每次试错。", "写出该场景的威胁模型：谁在听、谁能改、你要保护什么。", "给出现代替代方案，并说明它解决了哪些旧问题。"],
+      "steps_en": ["Pick a monoalphabetic ciphertext of 200+ characters.", "Record the frequency table, candidate mappings and every trial.", "Write the scenario's threat model: who listens, who modifies, what you protect.", "Propose a modern replacement and explain which old problems it solves."],
+      "game": "caesar"
+    },
+    {
+      "id": "machines",
+      "course": "cryptography-site-learn/courses/d05-rotor-mechanical/",
+      "title_zh": "路线二：复刻一台简化转子机",
+      "title_en": "Route 2: Rebuild a simplified rotor machine",
+      "desc_zh": "把转子、步进、反射器和密钥管理拆开，做一台能解释清楚的模型机。",
+      "desc_en": "Take rotors, stepping, reflector and key management apart, then build a model machine you can explain.",
+      "deliverable_zh": "一个可运行的简化转子机（命令行或网页），附一张流程图、三个结构弱点和一份密钥生命周期表。",
+      "deliverable_en": "A runnable simplified rotor machine (CLI or web), with a flow diagram, three structural weaknesses and a key-lifecycle table.",
+      "steps_zh": ["画出转子、反射器、接线板的信号路径。", "实现至少 3 个转子和一次步进。", "用已知明文 crib 做一次设置排除实验。", "写出密钥生成、分发、轮换、撤销与销毁流程。"],
+      "steps_en": ["Draw the signal path through rotors, reflector and plugboard.", "Implement at least three rotors and one stepping rule.", "Use a known-plaintext crib to run one setting-elimination experiment.", "Write the key generation, distribution, rotation, revocation and destruction flow."],
+      "game": "enigma"
+    },
+    {
+      "id": "modern",
+      "course": "cryptography-site-learn/courses/d08-block-ciphers/",
+      "title_zh": "路线三：设计一个安全消息格式",
+      "title_en": "Route 3: Design a secure message format",
+      "desc_zh": "把分组密码、哈希、AEAD、公钥、签名与 PKI 串成一个端到端可验证的消息格式。",
+      "desc_en": "Chain block ciphers, hashes, AEAD, public keys, signatures and PKI into an end-to-end verifiable message format.",
+      "deliverable_zh": "一份格式规范（字段、nonce、AAD、标签、签名、证书校验顺序）加一个最小实现或伪代码。",
+      "deliverable_en": "A format spec (fields, nonce, AAD, tag, signature, certificate-check order) plus a minimal implementation or pseudocode.",
+      "steps_zh": ["确定消息的机密性、完整性与身份目标。", "选择 AEAD 模式并规定 nonce 唯一性。", "规定签名覆盖哪些字段，避免歧义。", "画出证书链校验与失败拒绝路径。"],
+      "steps_en": ["Define confidentiality, integrity and identity goals for the message.", "Choose an AEAD mode and require nonce uniqueness.", "Specify exactly which fields the signature covers to avoid ambiguity.", "Draw the certificate-chain validation and fail-closed path."],
+      "game": "codebreak"
+    },
+    {
+      "id": "security",
+      "course": "cryptography-site-learn/courses/d17-side-channel/",
+      "title_zh": "路线四：审计一个真实登录流程",
+      "title_en": "Route 4: Audit a real login flow",
+      "desc_zh": "把侧信道、隐写、国密、工程安全与理论边界放进一个真实系统的审计报告。",
+      "desc_en": "Put side channels, steganography, Chinese national cryptography, engineering security and theory into one real-system audit.",
+      "deliverable_zh": "一份登录/更新流程审计：资产、信任边界、五个最可能失效点、验证方法与优先级。",
+      "deliverable_en": "A login/update audit: assets, trust boundaries, five likely failure points, verification methods and priorities.",
+      "steps_zh": ["画数据流图，标出认证、授权、存储、更新四层。", "列出每个信任边界和跨边界的密钥/令牌。", "给出五个最可能失效点，并写可复现的验证步骤。", "按影响 × 可能性排序，给出修复优先级。"],
+      "steps_en": ["Draw a data-flow diagram marking authentication, authorisation, storage and update layers.", "List each trust boundary and the keys/tokens crossing it.", "Name five likely failure points with reproducible verification steps.", "Rank by impact × likelihood and give fix priorities."],
+      "game": "password"
+    },
+    {
+      "id": "quantum",
+      "course": "cryptography-site-learn/courses/d21-quantum-crypto/",
+      "title_zh": "路线五：给 TLS 服务写后量子迁移方案",
+      "title_en": "Route 5: Write a post-quantum migration plan for a TLS service",
+      "desc_zh": "从 BB84 到 ML-KEM，把量子威胁、密钥分发和后量子迁移落到一个可执行的工程清单。",
+      "desc_en": "From BB84 to ML-KEM, turn quantum threats, key distribution and post-quantum migration into an executable engineering checklist.",
+      "deliverable_zh": "一份迁移方案：现状盘点、混合密钥交换、证书/签名路线、兼容性风险、回滚与验收指标。",
+      "deliverable_en": "A migration plan: inventory, hybrid key exchange, certificate/signature route, compatibility risks, rollback and acceptance metrics.",
+      "steps_zh": ["列出长期敏感数据和当前密钥交换/签名算法。", "选择经典 + 后量子的混合 KEM 组合。", "评估客户端、库、证书链与性能的兼容性。", "写出灰度、回滚与验收指标。"],
+      "steps_en": ["List long-lived sensitive data and current key-exchange/signature algorithms.", "Choose a classical + post-quantum hybrid KEM combination.", "Assess client, library, certificate-chain and performance compatibility.", "Write the canary, rollback and acceptance metrics."],
+      "game": "qkd-sim"
+    }
+  ]
+}

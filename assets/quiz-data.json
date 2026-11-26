@@ -1,0 +1,462 @@
+{
+  "version": 1,
+  "note": "每门课 3 题课程小测，用于自检，不替代结业项目。",
+  "courses": {
+    "d01-foundations": {
+      "questions": [
+        {
+          "id": "d01-q1",
+          "zh": {"q": "密码学最核心要解决的是哪一组问题？", "options": ["机密性、完整性与认证", "压缩、备份与渲染", "排序、索引与缓存", "排版、配色与动画"], "answer": 0, "why": "密码学围绕保密、防篡改和身份/来源认证展开；压缩和渲染不是它的核心目标。"},
+          "en": {"q": "Which group of problems is cryptography mainly concerned with?", "options": ["Confidentiality, integrity and authentication", "Compression, backup and rendering", "Sorting, indexing and caching", "Layout, colour and animation"], "answer": 0, "why": "Cryptography centres on secrecy, tamper resistance and authentication of identity or origin; compression and rendering are not its core goals."}
+        },
+        {
+          "id": "d01-q2",
+          "zh": {"q": "Kerckhoffs 原则的核心是什么？", "options": ["算法可以公开，安全性只依赖密钥", "算法必须保密，密钥可以公开", "只要使用 HTTPS 就安全", "密钥越长越安全，和实现无关"], "answer": 0, "why": "现代密码学假设攻击者知道算法，秘密应集中在密钥上；算法保密不能作为唯一防线。"},
+          "en": {"q": "What is the core of Kerckhoffs' principle?", "options": ["The algorithm may be public; security depends only on the key", "The algorithm must be secret; the key may be public", "HTTPS alone makes everything secure", "Longer keys always mean security, regardless of implementation"], "answer": 0, "why": "Modern cryptography assumes the attacker knows the algorithm; the secret belongs in the key, and algorithm secrecy cannot be the only defence."}
+        },
+        {
+          "id": "d01-q3",
+          "zh": {"q": "威胁模型的主要作用是什么？", "options": ["明确攻击者的能力、目标和边界", "证明一个算法永远不会被攻破", "替代密钥管理和实现审计", "让页面加载得更快"], "answer": 0, "why": "威胁模型把“防黑客”拆成可检验的假设：谁在攻击、能做什么、不能做什么。"},
+          "en": {"q": "What is the main purpose of a threat model?", "options": ["To define the adversary's capabilities, goals and boundaries", "To prove an algorithm can never be broken", "To replace key management and implementation audits", "To make pages load faster"], "answer": 0, "why": "A threat model turns “stop hackers” into testable assumptions: who attacks, what they can do and what they cannot."}
+        }
+      ]
+    },
+    "d02-monoalphabetic": {
+      "questions": [
+        {
+          "id": "d02-q1",
+          "zh": {"q": "凯撒密码使用 26 个字母、固定移位时，密钥空间有多大？", "options": ["26", "52", "676", "无限"], "answer": 0, "why": "固定移位只有 0–25 共 26 种；即使把 0 排除也只有 25 种，暴力枚举很容易。"},
+          "en": {"q": "With a 26-letter alphabet and a fixed Caesar shift, how large is the key space?", "options": ["26", "52", "676", "Infinite"], "answer": 0, "why": "A fixed shift has only 0–25, i.e. 26 values; even excluding 0 leaves 25, trivial to brute-force."}
+        },
+        {
+          "id": "d02-q2",
+          "zh": {"q": "单表替换最容易被哪种方法攻破？", "options": ["频率分析", "差分分析", "侧信道分析", "量子 Shor 算法"], "answer": 0, "why": "单表替换保留字母频率，长密文中的 e、t、a 等高频字母会暴露结构。"},
+          "en": {"q": "Which method most easily breaks monoalphabetic substitution?", "options": ["Frequency analysis", "Differential analysis", "Side-channel analysis", "Shor's quantum algorithm"], "answer": 0, "why": "Monoalphabetic substitution preserves letter frequencies, so frequent letters such as e, t and a reveal structure in long ciphertexts."}
+        },
+        {
+          "id": "d02-q3",
+          "zh": {"q": "仿射密码相对于凯撒密码主要增加了什么？", "options": ["一个乘法参数", "一个转子", "一个哈希函数", "一个分组模式"], "answer": 0, "why": "仿射密码使用 a·x+b 的形式，乘法参数 a 必须与模数互素，凯撒只是 a=1 的特例。"},
+          "en": {"q": "What does affine cipher add compared with Caesar cipher?", "options": ["A multiplication parameter", "A rotor", "A hash function", "A block mode"], "answer": 0, "why": "Affine cipher uses a·x+b; the multiplier a must be coprime to the modulus, and Caesar is the special case a=1."}
+        }
+      ]
+    },
+    "d03-polyalphabetic": {
+      "questions": [
+        {
+          "id": "d03-q1",
+          "zh": {"q": "维吉尼亚密码靠什么对抗单字母频率分析？", "options": ["周期密钥带来的多表替换", "只使用固定移位", "只改变字母顺序", "只使用一次密钥"], "answer": 0, "why": "不同位置的明文字母使用不同移位，单字母频率被摊开；但周期密钥仍会留下周期性结构。"},
+          "en": {"q": "What does Vigenère use to resist single-letter frequency analysis?", "options": ["Polyalphabetic substitution from a periodic key", "Only a fixed shift", "Only changing letter order", "A key used only once"], "answer": 0, "why": "Different positions use different shifts, spreading single-letter frequencies; a periodic key still leaves periodic structure."}
+        },
+        {
+          "id": "d03-q2",
+          "zh": {"q": "Kasiski 检验主要用来估计什么？", "options": ["密钥长度", "哈希值", "分组大小", "证书链长度"], "answer": 0, "why": "重复片段之间的距离常是密钥周期的倍数，取这些距离的最大公约数可以猜测密钥长度。"},
+          "en": {"q": "What does Kasiski examination mainly estimate?", "options": ["Key length", "Hash value", "Block size", "Certificate-chain length"], "answer": 0, "why": "Distances between repeated fragments are often multiples of the key period; their greatest common divisor suggests the key length."}
+        },
+        {
+          "id": "d03-q3",
+          "zh": {"q": "重合指数（IC）在古典密码分析中常用于什么？", "options": ["判断单表/多表并估计密钥长度", "计算数字签名", "压缩明文", "生成随机种子"], "answer": 0, "why": "单表文本的 IC 接近自然语言分布，多表会把它压低；按不同周期分组计算可帮助定位密钥长度。"},
+          "en": {"q": "What is the index of coincidence (IC) commonly used for in classical cryptanalysis?", "options": ["Distinguishing monoalphabetic from polyalphabetic and estimating key length", "Computing digital signatures", "Compressing plaintext", "Generating random seeds"], "answer": 0, "why": "A monoalphabetic text has an IC close to natural language; polyalphabetic text lowers it, and grouping by period helps locate key length."}
+        }
+      ]
+    },
+    "d04-transposition": {
+      "questions": [
+        {
+          "id": "d04-q1",
+          "zh": {"q": "换位密码改变的是什么？", "options": ["字母的顺序", "字母的形状", "密钥的长度", "哈希的输出"], "answer": 0, "why": "换位保留字母本身，只重排位置；因此字母频率不变，但位置统计和字谜结构会暴露。"},
+          "en": {"q": "What does a transposition cipher change?", "options": ["The order of letters", "The shape of letters", "The key length", "The hash output"], "answer": 0, "why": "Transposition keeps the letters and only rearranges positions, so letter frequencies remain but positional statistics and anagram structure leak."}
+        },
+        {
+          "id": "d04-q2",
+          "zh": {"q": "栅栏密码属于哪一类？", "options": ["换位", "替换", "哈希", "公钥加密"], "answer": 0, "why": "栅栏密码按行写入、按另一方向读出，改变的是排列顺序，不是字母本身。"},
+          "en": {"q": "Which category does rail fence belong to?", "options": ["Transposition", "Substitution", "Hashing", "Public-key encryption"], "answer": 0, "why": "Rail fence writes in rows and reads in another direction; it changes the permutation, not the letters."}
+        },
+        {
+          "id": "d04-q3",
+          "zh": {"q": "换位密码的排列搜索空间主要取决于什么？", "options": ["分组长度与排列规则", "字母频率", "密钥颜色", "证书有效期"], "answer": 0, "why": "分组越长、允许的排列规则越多，搜索空间越大；但已知明文或可读性约束会大幅缩小它。"},
+          "en": {"q": "What mainly determines the permutation search space of a transposition cipher?", "options": ["Block length and permutation rules", "Letter frequency", "Key colour", "Certificate validity"], "answer": 0, "why": "Longer blocks and more permitted permutations enlarge the space, but known plaintext or readability constraints shrink it sharply."}
+        }
+      ]
+    },
+    "d05-rotor-mechanical": {
+      "questions": [
+        {
+          "id": "d05-q1",
+          "zh": {"q": "Enigma 的反射器有什么关键作用？", "options": ["让加密自逆，并且不会把字母映射到自身", "把密钥长度加倍", "生成消息摘要", "压缩电报内容"], "answer": 0, "why": "反射器把信号折返，使同一设置下加密与解密相同；它也带来“字母不会映射到自身”的结构弱点。"},
+          "en": {"q": "What is the key role of Enigma's reflector?", "options": ["It makes encryption self-reciprocal and never maps a letter to itself", "It doubles the key length", "It generates a message digest", "It compresses telegraph traffic"], "answer": 0, "why": "The reflector sends the signal back, so the same setting encrypts and decrypts; it also creates the weakness that a letter never maps to itself."}
+        },
+        {
+          "id": "d05-q2",
+          "zh": {"q": "转子机的安全性主要来自什么？", "options": ["转子起始位置、接线板等密钥设置与步进", "算法完全保密", "字母频率不变", "依赖网络加密"], "answer": 0, "why": "转子机算法结构公开，安全性依赖每日密钥设置、接线板和转子顺序等；步进让同一字母在不同位置得到不同结果。"},
+          "en": {"q": "Where does a rotor machine's security mainly come from?", "options": ["Key settings such as rotor start positions and plugboard, plus stepping", "Complete algorithm secrecy", "Unchanged letter frequencies", "Network-layer encryption"], "answer": 0, "why": "The structure is public; security relies on daily settings, plugboard and rotor order, while stepping makes the same letter encrypt differently at different positions."}
+        },
+        {
+          "id": "d05-q3",
+          "zh": {"q": "对 Enigma 的著名破译主要依赖什么？", "options": ["已知明文/crib 与转子结构分析", "量子计算", "功耗侧信道", "哈希碰撞"], "answer": 0, "why": "Bletchley Park 利用可预测的 crib、菜单和 bombe 排除转子设置；这是结合已知明文与机械结构的攻击。"},
+          "en": {"q": "What did the famous Enigma breaks mainly rely on?", "options": ["Known plaintext/cribs and rotor-structure analysis", "Quantum computing", "Power side channels", "Hash collisions"], "answer": 0, "why": "Bletchley Park used predictable cribs, menus and bombes to eliminate rotor settings: an attack combining known plaintext with mechanical structure."}
+        }
+      ]
+    },
+    "d06-otp-stream": {
+      "questions": [
+        {
+          "id": "d06-q1",
+          "zh": {"q": "一次性密码本实现完美保密的关键条件是什么？", "options": ["密钥随机、与消息等长，并且只使用一次", "密钥越短越好", "密钥可以公开", "同一密钥可以重复使用"], "answer": 0, "why": "OTP 要求密钥真随机、与明文等长、只使用一次；重复使用会立即泄露两段明文的关系。"},
+          "en": {"q": "What are the key conditions for one-time-pad perfect secrecy?", "options": ["The key is random, as long as the message, and used only once", "The key should be as short as possible", "The key may be public", "The same key may be reused"], "answer": 0, "why": "OTP requires a truly random key, as long as the plaintext, used once; reuse immediately leaks relations between plaintexts."}
+        },
+        {
+          "id": "d06-q2",
+          "zh": {"q": "流密码通常怎样把明文变成密文？", "options": ["明文与密钥流逐位异或", "对明文做分组置换", "对明文做哈希", "对明文做数字签名"], "answer": 0, "why": "流密码生成密钥流，再与明文逐位异或；安全性取决于密钥流不可预测且不重用。"},
+          "en": {"q": "How does a stream cipher usually turn plaintext into ciphertext?", "options": ["XOR the plaintext with a keystream bit by bit", "Permute the plaintext in blocks", "Hash the plaintext", "Digitally sign the plaintext"], "answer": 0, "why": "A stream cipher generates a keystream and XORs it with plaintext; security depends on the keystream being unpredictable and never reused."}
+        },
+        {
+          "id": "d06-q3",
+          "zh": {"q": "两段消息重用同一密钥流，最直接的后果是什么？", "options": ["两段密文异或会泄露明文之间的关系", "自动获得前向保密", "哈希值变成固定长度", "证书自动续期"], "answer": 0, "why": "C1⊕C2 = P1⊕P2，攻击者不需要密钥就能得到两段明文的异或关系，再借助语言统计恢复内容。"},
+          "en": {"q": "What is the most direct consequence of reusing one keystream for two messages?", "options": ["XORing the two ciphertexts leaks relations between the plaintexts", "It automatically provides forward secrecy", "The hash becomes fixed-length", "Certificates renew automatically"], "answer": 0, "why": "C1⊕C2 = P1⊕P2, so an attacker gets the XOR of the plaintexts without the key and can recover content with language statistics."}
+        }
+      ]
+    },
+    "d07-cryptanalysis": {
+      "questions": [
+        {
+          "id": "d07-q1",
+          "zh": {"q": "唯密文攻击指的是哪一种情形？", "options": ["攻击者只知道密文", "攻击者知道明文和密文", "攻击者可以自由加密", "攻击者可以自由签名"], "answer": 0, "why": "唯密文是最弱的能力假设；已知明文、选择明文、选择密文会逐步增强攻击者。"},
+          "en": {"q": "What does a ciphertext-only attack mean?", "options": ["The attacker only knows ciphertext", "The attacker knows plaintext and ciphertext", "The attacker can encrypt freely", "The attacker can sign freely"], "answer": 0, "why": "Ciphertext-only is the weakest capability assumption; known-plaintext, chosen-plaintext and chosen-ciphertext progressively strengthen the attacker."}
+        },
+        {
+          "id": "d07-q2",
+          "zh": {"q": "差分分析主要利用什么关系？", "options": ["输入差与输出差之间的关系", "密钥长度与证书长度", "压缩率与文件大小", "随机种子与时间"], "answer": 0, "why": "差分分析追踪特定输入差如何传播到输出差，用高概率差分区分密钥猜测。"},
+          "en": {"q": "What relationship does differential cryptanalysis mainly exploit?", "options": ["The relationship between input differences and output differences", "Key length versus certificate length", "Compression ratio versus file size", "Random seed versus time"], "answer": 0, "why": "Differential cryptanalysis tracks how a chosen input difference propagates to output differences and uses high-probability trails to distinguish key guesses."}
+        },
+        {
+          "id": "d07-q3",
+          "zh": {"q": "中间相遇攻击主要针对什么？", "options": ["双重加密的密钥空间", "哈希函数的输出", "TLS 证书链", "随机数熵源"], "answer": 0, "why": "对双重加密，攻击者分别从明文侧和密文侧枚举一半密钥，在中间状态相遇，把 2^k 降到约 2^(k/2)。"},
+          "en": {"q": "What does a meet-in-the-middle attack mainly target?", "options": ["The key space of double encryption", "The output of a hash function", "A TLS certificate chain", "A random entropy source"], "answer": 0, "why": "Against double encryption, the attacker enumerates half the key from each side and meets in the middle, reducing about 2^k to 2^(k/2)."}
+        }
+      ]
+    },
+    "d08-block-ciphers": {
+      "questions": [
+        {
+          "id": "d08-q1",
+          "zh": {"q": "AES 的分组长度是多少？", "options": ["128 位", "64 位", "256 位", "512 位"], "answer": 0, "why": "AES 固定 128 位分组，密钥长度可以是 128、192 或 256 位；不要混淆分组长度和密钥长度。"},
+          "en": {"q": "What is the block size of AES?", "options": ["128 bits", "64 bits", "256 bits", "512 bits"], "answer": 0, "why": "AES has a fixed 128-bit block; key sizes may be 128, 192 or 256 bits. Do not confuse block size with key size."}
+        },
+        {
+          "id": "d08-q2",
+          "zh": {"q": "ECB 模式最主要的问题是什么？", "options": ["相同明文块会产生相同密文块", "它不能解密", "它不需要密钥", "它比所有模式都慢"], "answer": 0, "why": "ECB 对每个块独立加密，保留块的重复结构；图片、结构化数据会直接暴露轮廓。"},
+          "en": {"q": "What is the main problem with ECB mode?", "options": ["Identical plaintext blocks produce identical ciphertext blocks", "It cannot decrypt", "It needs no key", "It is slower than every other mode"], "answer": 0, "why": "ECB encrypts each block independently and preserves repeated block structure, so images and structured data leak their outlines."}
+        },
+        {
+          "id": "d08-q3",
+          "zh": {"q": "扩散与混淆分别想达到什么效果？", "options": ["扩散打散统计结构，混淆让密钥与密文关系复杂", "两者完全一样", "只用于哈希", "只用于数字签名"], "answer": 0, "why": "扩散让一位变化影响多位，混淆让密钥与密文的关系难以反推；现代分组密码两者并用。"},
+          "en": {"q": "What do diffusion and confusion aim for?", "options": ["Diffusion spreads statistical structure; confusion makes key-ciphertext relations complex", "They are exactly the same", "They are only for hashing", "They are only for digital signatures"], "answer": 0, "why": "Diffusion makes one-bit changes affect many bits; confusion makes key-ciphertext relations hard to invert. Modern block ciphers use both."}
+        }
+      ]
+    },
+    "d09-hashes": {
+      "questions": [
+        {
+          "id": "d09-q1",
+          "zh": {"q": "哈希的抗碰撞性指什么？", "options": ["难以找到两个不同输入产生同一输出", "难以从输出还原输入", "难以计算哈希", "难以压缩文件"], "answer": 0, "why": "抗碰撞针对“两个不同输入同一输出”；单向性针对“由输出还原输入”，两者不是同一性质。"},
+          "en": {"q": "What does collision resistance of a hash mean?", "options": ["It is hard to find two different inputs with the same output", "It is hard to recover the input from the output", "It is hard to compute the hash", "It is hard to compress files"], "answer": 0, "why": "Collision resistance concerns two different inputs with one output; one-wayness concerns recovering input from output. They are different properties."}
+        },
+        {
+          "id": "d09-q2",
+          "zh": {"q": "生日攻击利用的是什么概率现象？", "options": ["碰撞概率随输出空间平方根增长", "密钥重用会泄露明文", "证书链会自动缩短", "侧信道会泄露功耗"], "answer": 0, "why": "在 n 个可能输出中，大约枚举 √n 个输入就有较高碰撞概率，所以短输出哈希更容易被碰撞攻击。"},
+          "en": {"q": "What probability phenomenon does a birthday attack exploit?", "options": ["Collision probability grows with the square root of the output space", "Key reuse leaks plaintext", "Certificate chains shorten automatically", "Side channels leak power"], "answer": 0, "why": "Among n possible outputs, about √n inputs give a high collision probability, so short-output hashes are easier to collide."}
+        },
+        {
+          "id": "d09-q3",
+          "zh": {"q": "口令派生通常应该使用什么？", "options": ["加盐并使用慢哈希", "直接使用一次 MD5", "明文存储口令", "只做 Base64 编码"], "answer": 0, "why": "盐防止预计算表和相同口令批量破解，慢哈希提高每次猜测成本；Base64 不是加密。"},
+          "en": {"q": "What should password derivation normally use?", "options": ["A salt plus a slow hash", "A single MD5 pass", "Plaintext password storage", "Base64 encoding only"], "answer": 0, "why": "Salt defeats precomputed tables and identical-password batches; a slow hash raises the cost per guess. Base64 is not encryption."}
+        }
+      ]
+    },
+    "d10-auth-aead": {
+      "questions": [
+        {
+          "id": "d10-q1",
+          "zh": {"q": "MAC 主要提供什么？", "options": ["完整性与来源认证", "机密性", "压缩", "随机性"], "answer": 0, "why": "MAC 用共享密钥验证消息未被篡改且来自持有密钥的一方；它本身不提供机密性。"},
+          "en": {"q": "What does a MAC mainly provide?", "options": ["Integrity and origin authentication", "Confidentiality", "Compression", "Randomness"], "answer": 0, "why": "A MAC uses a shared key to verify that a message was not modified and comes from a key holder; it does not provide confidentiality by itself."}
+        },
+        {
+          "id": "d10-q2",
+          "zh": {"q": "AEAD 同时提供哪两项保证？", "options": ["机密性与完整性", "压缩与加密", "签名与哈希", "随机与认证"], "answer": 0, "why": "AEAD 把加密与认证绑定，典型是 AES-GCM、ChaCha20-Poly1305；它不负责压缩。"},
+          "en": {"q": "Which two guarantees does AEAD provide together?", "options": ["Confidentiality and integrity", "Compression and encryption", "Signing and hashing", "Randomness and authentication"], "answer": 0, "why": "AEAD binds encryption and authentication, typically AES-GCM or ChaCha20-Poly1305; it does not compress."}
+        },
+        {
+          "id": "d10-q3",
+          "zh": {"q": "encrypt-then-MAC 的正确顺序是什么？", "options": ["先加密，再对密文计算 MAC", "先计算 MAC，再加密", "同时加密和计算 MAC", "只加密，不认证"], "answer": 0, "why": "先加密再对密文和相关信息认证，接收方可以先验 MAC 再解密，避免处理未认证的密文。"},
+          "en": {"q": "What is the correct order in encrypt-then-MAC?", "options": ["Encrypt first, then MAC the ciphertext", "MAC first, then encrypt", "Encrypt and MAC at the same time", "Encrypt only, never authenticate"], "answer": 0, "why": "Encrypting first and then authenticating ciphertext and associated data lets the receiver verify the MAC before decrypting, avoiding work on unauthenticated ciphertext."}
+        }
+      ]
+    },
+    "d11-asymmetric": {
+      "questions": [
+        {
+          "id": "d11-q1",
+          "zh": {"q": "RSA 的安全性主要基于哪个困难问题？", "options": ["大整数分解", "最短向量问题", "哈希碰撞", "证书链验证"], "answer": 0, "why": "RSA 依赖大整数分解的困难性；格基方案才更多依赖最短向量等问题。"},
+          "en": {"q": "Which hard problem does RSA security mainly rely on?", "options": ["Large integer factorisation", "Shortest vector problem", "Hash collisions", "Certificate-chain validation"], "answer": 0, "why": "RSA relies on the hardness of factoring large integers; lattice schemes rely more on problems such as the shortest vector problem."}
+        },
+        {
+          "id": "d11-q2",
+          "zh": {"q": "Diffie-Hellman 主要解决什么问题？", "options": ["在不安全信道上协商共享密钥", "生成数字签名", "计算哈希", "压缩密文"], "answer": 0, "why": "DH 让双方在公开信道上建立共享秘密，但它本身不认证对方身份，需要配合证书或其它认证。"},
+          "en": {"q": "What does Diffie-Hellman mainly solve?", "options": ["Agreeing on a shared key over an insecure channel", "Generating digital signatures", "Computing hashes", "Compressing ciphertext"], "answer": 0, "why": "DH lets two parties establish a shared secret over a public channel, but it does not authenticate the peer by itself and needs certificates or other authentication."}
+        },
+        {
+          "id": "d11-q3",
+          "zh": {"q": "椭圆曲线密码在同等安全强度下的主要优势是什么？", "options": ["密钥和签名更短", "不需要密钥", "可以替代哈希", "可以离线解密所有数据"], "answer": 0, "why": "在相近安全强度下，ECC 的密钥和签名比 RSA 短，适合带宽和存储受限的场景。"},
+          "en": {"q": "What is the main advantage of elliptic-curve cryptography at comparable security?", "options": ["Shorter keys and signatures", "No keys are needed", "It replaces hashing", "It decrypts all data offline"], "answer": 0, "why": "At similar security levels, ECC keys and signatures are shorter than RSA, which suits bandwidth- and storage-constrained settings."}
+        }
+      ]
+    },
+    "d12-signatures": {
+      "questions": [
+        {
+          "id": "d12-q1",
+          "zh": {"q": "数字签名通常用哪把钥匙生成签名？", "options": ["签名者的私钥", "签名者的公钥", "会话密钥", "哈希值"], "answer": 0, "why": "私钥签名、公钥验签；公钥是公开的，不能用来生成只有签名者能生成的签名。"},
+          "en": {"q": "Which key normally generates a digital signature?", "options": ["The signer's private key", "The signer's public key", "A session key", "A hash value"], "answer": 0, "why": "The private key signs and the public key verifies; the public key is public and cannot create a signature only the signer could make."}
+        },
+        {
+          "id": "d12-q2",
+          "zh": {"q": "盲签名的主要特点是什么？", "options": ["签名者不知道被签内容", "签名不能被验证", "不需要密钥", "只能用于哈希"], "answer": 0, "why": "盲签名让签名者在不知道消息内容的情况下签署，常用于匿名凭证和电子现金。"},
+          "en": {"q": "What is the main feature of a blind signature?", "options": ["The signer does not know the content being signed", "The signature cannot be verified", "No key is needed", "It only works on hashes"], "answer": 0, "why": "A blind signature lets the signer sign without knowing the message content, often used for anonymous credentials and electronic cash."}
+        },
+        {
+          "id": "d12-q3",
+          "zh": {"q": "门限签名需要什么条件才能生成有效签名？", "options": ["达到阈值数量的参与者协作", "一个私钥公开", "完全不需要密钥", "只使用 MAC"], "answer": 0, "why": "门限签名把签名能力分散到多方，至少 t 方协作才能产生有效签名，降低单点泄露风险。"},
+          "en": {"q": "What condition is needed to produce a valid threshold signature?", "options": ["At least a threshold number of participants collaborate", "One private key is published", "No keys at all", "Only a MAC is used"], "answer": 0, "why": "Threshold signatures split signing capability across parties; at least t parties must collaborate, reducing single-point key exposure."}
+        }
+      ]
+    },
+    "d13-key-management": {
+      "questions": [
+        {
+          "id": "d13-q1",
+          "zh": {"q": "以下哪一项不属于密钥管理的典型环节？", "options": ["压缩密钥文件", "生成密钥", "轮换密钥", "撤销密钥"], "answer": 0, "why": "密钥管理覆盖生成、分发、使用、轮换、撤销、备份和销毁；压缩不是安全环节。"},
+          "en": {"q": "Which of these is not a typical part of key management?", "options": ["Compressing key files", "Generating keys", "Rotating keys", "Revoking keys"], "answer": 0, "why": "Key management covers generation, distribution, use, rotation, revocation, backup and destruction; compression is not a security step."}
+        },
+        {
+          "id": "d13-q2",
+          "zh": {"q": "密钥轮换的主要目的是什么？", "options": ["限制泄露影响并控制密钥生命周期", "增加文件体积", "替代所有认证", "加快哈希计算"], "answer": 0, "why": "定期轮换让单次泄露只影响有限数据和时间窗口，也便于退役弱算法。"},
+          "en": {"q": "What is the main purpose of key rotation?", "options": ["Limit the impact of compromise and control key lifetime", "Increase file size", "Replace all authentication", "Speed up hashing"], "answer": 0, "why": "Regular rotation limits a compromise to a bounded data set and time window, and helps retire weak algorithms."}
+        },
+        {
+          "id": "d13-q3",
+          "zh": {"q": "HSM 主要提供什么？", "options": ["密钥隔离与硬件保护", "网页渲染", "文件压缩", "证书排版"], "answer": 0, "why": "硬件安全模块把密钥操作放在受保护边界内，减少密钥出现在普通内存和磁盘的机会。"},
+          "en": {"q": "What does an HSM mainly provide?", "options": ["Key isolation and hardware protection", "Web rendering", "File compression", "Certificate layout"], "answer": 0, "why": "A hardware security module keeps key operations inside a protected boundary, reducing exposure of keys in ordinary memory and disk."}
+        }
+      ]
+    },
+    "d14-protocols-pki": {
+      "questions": [
+        {
+          "id": "d14-q1",
+          "zh": {"q": "TLS 主要提供哪组保证？", "options": ["传输机密性、完整性与服务器认证", "文件压缩与备份", "页面渲染与动画", "磁盘加密与分区"], "answer": 0, "why": "TLS 在客户端和服务器之间建立受保护的通道，并用证书认证服务器身份。"},
+          "en": {"q": "Which guarantees does TLS mainly provide?", "options": ["Transport confidentiality, integrity and server authentication", "File compression and backup", "Page rendering and animation", "Disk encryption and partitioning"], "answer": 0, "why": "TLS establishes a protected channel between client and server and authenticates the server with certificates."}
+        },
+        {
+          "id": "d14-q2",
+          "zh": {"q": "证书链的主要作用是什么？", "options": ["把终端证书连接到受信任的根", "压缩证书文件", "生成随机数", "替代所有签名"], "answer": 0, "why": "浏览器从终端证书沿中间 CA 走到受信任根，验证签名和用途，建立信任路径。"},
+          "en": {"q": "What is the main role of a certificate chain?", "options": ["Connect the end-entity certificate to a trusted root", "Compress certificate files", "Generate random numbers", "Replace all signatures"], "answer": 0, "why": "A browser walks from the end-entity certificate through intermediate CAs to a trusted root, verifying signatures and usage to build a trust path."}
+        },
+        {
+          "id": "d14-q3",
+          "zh": {"q": "防范中间人攻击最关键的一步是什么？", "options": ["正确验证服务器证书和公钥", "关闭 HTTPS", "使用 HTTP 明文", "忽略证书警告"], "answer": 0, "why": "中间人可以替换公钥；只有正确验证证书链、域名和有效期，才能把公钥绑定到目标服务器。"},
+          "en": {"q": "What is the most critical step against man-in-the-middle attacks?", "options": ["Correctly verify the server certificate and public key", "Disable HTTPS", "Use plain HTTP", "Ignore certificate warnings"], "answer": 0, "why": "An interceptor can substitute a public key; only correct validation of chain, hostname and validity binds the key to the intended server."}
+        }
+      ]
+    },
+    "d15-zkp": {
+      "questions": [
+        {
+          "id": "d15-q1",
+          "zh": {"q": "零知识证明的三个核心性质是什么？", "options": ["完备性、可靠性、零知识", "机密性、完整性、可用性", "压缩、加密、签名", "随机、确定、可逆"], "answer": 0, "why": "完备性保证真陈述能通过，可靠性保证假陈述难以通过，零知识保证不泄露陈述以外的信息。"},
+          "en": {"q": "What are the three core properties of a zero-knowledge proof?", "options": ["Completeness, soundness and zero knowledge", "Confidentiality, integrity and availability", "Compression, encryption and signing", "Randomness, determinism and reversibility"], "answer": 0, "why": "Completeness lets true statements pass, soundness makes false statements hard to pass, and zero knowledge leaks nothing beyond the statement."}
+        },
+        {
+          "id": "d15-q2",
+          "zh": {"q": "Fiat-Shamir 启发式把什么变成了什么？", "options": ["交互式证明变成非交互式证明", "加密变成哈希", "签名变成 MAC", "密钥变成公钥"], "answer": 0, "why": "它用哈希挑战替代验证者的随机挑战，把交互轮次压成一条可验证的证明；安全性依赖哈希建模。"},
+          "en": {"q": "What does the Fiat-Shamir heuristic turn into what?", "options": ["An interactive proof into a non-interactive proof", "Encryption into hashing", "A signature into a MAC", "A key into a public key"], "answer": 0, "why": "It replaces the verifier's random challenge with a hash challenge, collapsing rounds into one verifiable proof; security depends on the hash model."}
+        },
+        {
+          "id": "d15-q3",
+          "zh": {"q": "零知识证明最适合证明哪类事情？", "options": ["知道某个秘密而不泄露秘密本身", "文件有多大", "网络有多快", "随机数有多随机"], "answer": 0, "why": "零知识证明可以证明“我知道一个满足条件的值”而不公开该值，例如图同构的映射或离散对数。"},
+          "en": {"q": "What kind of thing is a zero-knowledge proof best suited to prove?", "options": ["Knowing a secret without revealing the secret itself", "How large a file is", "How fast a network is", "How random a number is"], "answer": 0, "why": "A zero-knowledge proof can prove “I know a value satisfying a condition” without revealing it, such as a graph isomorphism or a discrete logarithm."}
+        }
+      ]
+    },
+    "d16-secret-sharing-mpc": {
+      "questions": [
+        {
+          "id": "d16-q1",
+          "zh": {"q": "(t,n) 门限秘密共享需要多少份才能恢复秘密？", "options": ["至少 t 份", "任意 1 份", "必须全部 n 份", "0 份"], "answer": 0, "why": "t 是门限，n 是总份数；至少 t 份才能恢复，少于 t 份不应得到任何信息。"},
+          "en": {"q": "How many shares are required to recover a (t,n) threshold secret?", "options": ["At least t shares", "Any single share", "All n shares", "Zero shares"], "answer": 0, "why": "t is the threshold and n the total; at least t shares recover the secret, and fewer than t should reveal nothing."}
+        },
+        {
+          "id": "d16-q2",
+          "zh": {"q": "MPC 的核心目标是什么？", "options": ["多方共同计算而不泄露各自输入", "压缩所有通信", "生成数字证书", "替代哈希函数"], "answer": 0, "why": "安全多方计算让各方在不公开私有输入的情况下得到共同结果，隐私和正确性要同时保证。"},
+          "en": {"q": "What is the core goal of MPC?", "options": ["Multiple parties compute together without revealing their inputs", "Compress all communication", "Generate digital certificates", "Replace hash functions"], "answer": 0, "why": "Secure multi-party computation lets parties obtain a joint result without exposing private inputs, protecting privacy and correctness together."}
+        },
+        {
+          "id": "d16-q3",
+          "zh": {"q": "混淆电路属于哪类技术？", "options": ["安全多方计算/MPC", "哈希", "数字签名", "证书链"], "answer": 0, "why": "混淆电路把函数编码成加密门电路，双方按协议求值而不泄露输入，是 MPC 的经典构造。"},
+          "en": {"q": "Which category does garbled circuit belong to?", "options": ["Secure multi-party computation / MPC", "Hashing", "Digital signatures", "Certificate chains"], "answer": 0, "why": "A garbled circuit encodes a function as encrypted gates so two parties can evaluate it without revealing inputs; it is a classic MPC construction."}
+        }
+      ]
+    },
+    "d17-side-channel": {
+      "questions": [
+        {
+          "id": "d17-q1",
+          "zh": {"q": "侧信道攻击主要利用什么？", "options": ["时间、功耗、缓存等物理泄露", "数学证明的漏洞", "证书格式错误", "文件压缩率"], "answer": 0, "why": "侧信道绕过数学层，从实现的物理行为推断密钥或明文；算法安全不等于实现安全。"},
+          "en": {"q": "What does a side-channel attack mainly exploit?", "options": ["Physical leakage such as timing, power and cache", "Flaws in a mathematical proof", "Certificate format errors", "File compression ratios"], "answer": 0, "why": "Side channels bypass the mathematical layer and infer keys or plaintext from physical implementation behaviour; algorithm security is not implementation security."}
+        },
+        {
+          "id": "d17-q2",
+          "zh": {"q": "常量时间实现主要防范什么？", "options": ["时间侧信道", "哈希碰撞", "证书过期", "文件压缩"], "answer": 0, "why": "常量时间让执行路径和时序不依赖秘密数据，减少攻击者通过时间差推断密钥的机会。"},
+          "en": {"q": "What does constant-time implementation mainly defend against?", "options": ["Timing side channels", "Hash collisions", "Certificate expiry", "File compression"], "answer": 0, "why": "Constant time keeps execution paths and timing independent of secret data, reducing the chance of inferring keys from timing differences."}
+        },
+        {
+          "id": "d17-q3",
+          "zh": {"q": "故障注入属于哪类攻击？", "options": ["物理攻击", "协议攻击", "哈希攻击", "签名攻击"], "answer": 0, "why": "故障注入通过电压、时钟、温度等扰动让芯片出错，再从错误结果推断密钥，属于物理攻击。"},
+          "en": {"q": "Which category does fault injection belong to?", "options": ["Physical attack", "Protocol attack", "Hash attack", "Signature attack"], "answer": 0, "why": "Fault injection perturbs voltage, clock or temperature to make a chip misbehave and infer keys from errors; it is a physical attack."}
+        }
+      ]
+    },
+    "d18-steganography": {
+      "questions": [
+        {
+          "id": "d18-q1",
+          "zh": {"q": "隐写与加密最核心的区别是什么？", "options": ["隐写隐藏“消息存在”，加密隐藏“消息内容”", "两者完全相同", "隐写不需要载体", "加密不隐藏内容"], "answer": 0, "why": "加密后的数据仍然可见，只是内容不可读；隐写让观察者不知道有消息，通常还需要加密保护内容。"},
+          "en": {"q": "What is the core difference between steganography and encryption?", "options": ["Steganography hides that a message exists; encryption hides its content", "They are identical", "Steganography needs no carrier", "Encryption does not hide content"], "answer": 0, "why": "Encrypted data is still visible but unreadable; steganography hides the existence of a message and usually still needs encryption for content."}
+        },
+        {
+          "id": "d18-q2",
+          "zh": {"q": "LSB 隐写通常修改什么？", "options": ["像素值的最低有效位", "文件头", "证书签名", "密钥长度"], "answer": 0, "why": "最低有效位对人眼影响小，适合嵌入；但会改变载体统计，可能被卡方检验等隐写分析发现。"},
+          "en": {"q": "What does LSB steganography usually modify?", "options": ["The least significant bits of pixel values", "File headers", "Certificate signatures", "Key length"], "answer": 0, "why": "Least significant bits have little visual impact and are easy to embed in, but they change carrier statistics and can be detected by chi-square and other steganalysis."}
+        },
+        {
+          "id": "d18-q3",
+          "zh": {"q": "隐写分析的目标是什么？", "options": ["检测载体中是否存在隐藏消息", "解密消息内容", "压缩载体", "生成签名"], "answer": 0, "why": "隐写分析先判断“有没有”，再尝试提取；它不一定需要知道加密密钥。"},
+          "en": {"q": "What is the goal of steganalysis?", "options": ["Detect whether a hidden message exists in a carrier", "Decrypt the message content", "Compress the carrier", "Generate a signature"], "answer": 0, "why": "Steganalysis first decides whether something is hidden, then tries to extract it; it does not necessarily need the encryption key."}
+        }
+      ]
+    },
+    "d19-randomness": {
+      "questions": [
+        {
+          "id": "d19-q1",
+          "zh": {"q": "CSPRNG 的关键要求是什么？", "options": ["输出不可预测且通过统计检验", "输出完全可预测", "种子固定不变", "不需要熵源"], "answer": 0, "why": "密码学安全伪随机数生成器要抗预测、抗状态恢复，普通 PRNG 只追求统计分布。"},
+          "en": {"q": "What is the key requirement for a CSPRNG?", "options": ["Unpredictable output that passes statistical tests", "Fully predictable output", "A fixed seed", "No entropy source"], "answer": 0, "why": "A cryptographically secure PRNG must resist prediction and state recovery; an ordinary PRNG only aims at statistical distribution."}
+        },
+        {
+          "id": "d19-q2",
+          "zh": {"q": "熵源在随机数生成中起什么作用？", "options": ["提供不可预测的原始随机性", "压缩输出", "加密输出", "认证用户"], "answer": 0, "why": "熵源把物理或系统噪声引入，种子才有不可预测性；熵不足会让 CSPRNG 的输出可被猜中。"},
+          "en": {"q": "What role does an entropy source play in random generation?", "options": ["It provides unpredictable raw randomness", "It compresses output", "It encrypts output", "It authenticates users"], "answer": 0, "why": "An entropy source injects physical or system noise so the seed is unpredictable; insufficient entropy makes CSPRNG output guessable."}
+        },
+        {
+          "id": "d19-q3",
+          "zh": {"q": "伪随机数生成器的种子泄露会导致什么？", "options": ["输出序列可被预测", "安全性自动提高", "密钥自动轮换", "证书自动过期"], "answer": 0, "why": "PRNG 是确定性算法，知道种子就能复现整条序列；CSPRNG 也依赖秘密状态。"},
+          "en": {"q": "What happens if a PRNG seed leaks?", "options": ["The output sequence becomes predictable", "Security improves automatically", "Keys rotate automatically", "Certificates expire automatically"], "answer": 0, "why": "A PRNG is deterministic: knowing the seed reproduces the whole sequence; a CSPRNG also depends on secret state."}
+        }
+      ]
+    },
+    "d20-china-sm": {
+      "questions": [
+        {
+          "id": "d20-q1",
+          "zh": {"q": "SM2 属于哪一类算法？", "options": ["椭圆曲线公钥密码", "哈希", "分组密码", "流密码"], "answer": 0, "why": "SM2 是基于椭圆曲线的公钥密码体系，包含加密、签名和密钥交换。"},
+          "en": {"q": "Which type of algorithm is SM2?", "options": ["Elliptic-curve public-key cryptography", "Hash", "Block cipher", "Stream cipher"], "answer": 0, "why": "SM2 is an elliptic-curve public-key system covering encryption, signatures and key exchange."}
+        },
+        {
+          "id": "d20-q2",
+          "zh": {"q": "SM3 是什么类型的算法？", "options": ["哈希算法", "分组密码", "数字签名", "传输协议"], "answer": 0, "why": "SM3 输出 256 位摘要，用于完整性校验、签名中的杂凑等；它不是分组密码。"},
+          "en": {"q": "What type of algorithm is SM3?", "options": ["Hash algorithm", "Block cipher", "Digital signature", "Transport protocol"], "answer": 0, "why": "SM3 produces a 256-bit digest for integrity checks and hashing in signatures; it is not a block cipher."}
+        },
+        {
+          "id": "d20-q3",
+          "zh": {"q": "SM4 是什么类型的算法？", "options": ["分组密码", "哈希", "公钥密码", "流密码"], "answer": 0, "why": "SM4 是 128 位分组、128 位密钥的分组密码，常用于对称加密。"},
+          "en": {"q": "What type of algorithm is SM4?", "options": ["Block cipher", "Hash", "Public-key cipher", "Stream cipher"], "answer": 0, "why": "SM4 is a block cipher with a 128-bit block and 128-bit key, commonly used for symmetric encryption."}
+        }
+      ]
+    },
+    "d21-quantum-crypto": {
+      "questions": [
+        {
+          "id": "d21-q1",
+          "zh": {"q": "BB84 利用什么物理性质发现窃听？", "options": ["量子态不可克隆，测量会扰动状态", "哈希碰撞的概率", "证书链的长度", "文件压缩率"], "answer": 0, "why": "窃听者不知道基时测量会扰动量子态，双方比对部分结果就能发现异常误码。"},
+          "en": {"q": "What physical property does BB84 use to detect eavesdropping?", "options": ["Quantum states cannot be cloned and measurement disturbs them", "Hash collision probability", "Certificate-chain length", "File compression ratio"], "answer": 0, "why": "An eavesdropper measuring in the wrong basis disturbs the state; comparing a subset of results reveals abnormal error rates."}
+        },
+        {
+          "id": "d21-q2",
+          "zh": {"q": "QKD 主要提供什么？", "options": ["密钥分发", "数字签名", "哈希", "文件压缩"], "answer": 0, "why": "量子密钥分发解决两端生成共享密钥的问题；它不认证身份，也不替代签名。"},
+          "en": {"q": "What does QKD mainly provide?", "options": ["Key distribution", "Digital signatures", "Hashing", "File compression"], "answer": 0, "why": "Quantum key distribution solves sharing a key between two endpoints; it does not authenticate identity or replace signatures."}
+        },
+        {
+          "id": "d21-q3",
+          "zh": {"q": "量子计算对 RSA/ECC 的主要威胁来自哪个算法？", "options": ["Shor 算法", "Grover 算法", "AES", "SHA-256"], "answer": 0, "why": "Shor 算法可在量子计算机上分解大整数和求离散对数；Grover 主要影响对称搜索，威胁程度不同。"},
+          "en": {"q": "Which algorithm is the main quantum threat to RSA/ECC?", "options": ["Shor's algorithm", "Grover's algorithm", "AES", "SHA-256"], "answer": 0, "why": "Shor's algorithm can factor large integers and compute discrete logs on a quantum computer; Grover mainly affects symmetric search, a different level of threat."}
+        }
+      ]
+    },
+    "d22-post-quantum": {
+      "questions": [
+        {
+          "id": "d22-q1",
+          "zh": {"q": "Kyber 属于哪一类后量子方案？", "options": ["格基密钥封装（KEM）", "哈希", "分组密码", "证书链"], "answer": 0, "why": "Kyber 是基于格的 KEM，已被 NIST 选为 ML-KEM 标准；它用于密钥协商，不直接做签名。"},
+          "en": {"q": "Which kind of post-quantum scheme is Kyber?", "options": ["Lattice-based key encapsulation (KEM)", "Hash", "Block cipher", "Certificate chain"], "answer": 0, "why": "Kyber is a lattice-based KEM selected by NIST as ML-KEM; it is used for key establishment, not directly for signatures."}
+        },
+        {
+          "id": "d22-q2",
+          "zh": {"q": "“先收集、后解密”指的是什么？", "options": ["现在收集密文，等量子计算成熟后再解密", "现在解密，未来收集密文", "先压缩再加密", "先签名再加密"], "answer": 0, "why": "攻击者可以把今天截获的长期敏感数据留到未来量子计算机可用时破解，因此需要提前迁移。"},
+          "en": {"q": "What does “harvest now, decrypt later” mean?", "options": ["Collect ciphertext now and decrypt it when quantum computing matures", "Decrypt now and collect ciphertext later", "Compress before encrypting", "Sign before encrypting"], "answer": 0, "why": "An attacker can store today's long-lived sensitive data and break it when a quantum computer is available, so migration must start early."}
+        },
+        {
+          "id": "d22-q3",
+          "zh": {"q": "ML-KEM 是什么？", "options": ["NIST 的后量子密钥封装标准", "一种分组密码", "一种哈希", "一种传输协议"], "answer": 0, "why": "ML-KEM 来自 Kyber，是 NIST 标准化的后量子 KEM，常与经典 ECDH 组合成混合密钥交换。"},
+          "en": {"q": "What is ML-KEM?", "options": ["NIST's post-quantum key-encapsulation standard", "A block cipher", "A hash", "A transport protocol"], "answer": 0, "why": "ML-KEM derives from Kyber and is NIST's standardised post-quantum KEM, often combined with classical ECDH in hybrid key exchange."}
+        }
+      ]
+    },
+    "d23-applied-security": {
+      "questions": [
+        {
+          "id": "d23-q1",
+          "zh": {"q": "存储用户口令时，推荐的做法是什么？", "options": ["加盐并使用慢哈希", "明文存储", "单次 MD5", "只做 Base64"], "answer": 0, "why": "慢哈希提高猜测成本，盐防止预计算和批量破解；MD5 和 Base64 都不适合存储口令。"},
+          "en": {"q": "What is the recommended way to store user passwords?", "options": ["Salt and a slow hash", "Plaintext storage", "A single MD5 pass", "Base64 only"], "answer": 0, "why": "A slow hash raises guessing cost and a salt defeats precomputation and batch cracking; MD5 and Base64 are unsuitable for password storage."}
+        },
+        {
+          "id": "d23-q2",
+          "zh": {"q": "钓鱼攻击主要利用什么？", "options": ["社会工程与界面伪装", "哈希碰撞", "侧信道功耗", "文件压缩"], "answer": 0, "why": "钓鱼利用人的信任、紧迫感和页面伪装，技术防线之外还需要流程与用户教育。"},
+          "en": {"q": "What does phishing mainly exploit?", "options": ["Social engineering and interface disguise", "Hash collisions", "Side-channel power", "File compression"], "answer": 0, "why": "Phishing exploits trust, urgency and visual disguise; technical defences need process design and user education alongside."}
+        },
+        {
+          "id": "d23-q3",
+          "zh": {"q": "供应链攻击通常指什么？", "options": ["通过依赖、构建或更新渠道植入恶意代码", "直接破解 RSA", "利用量子计算机", "伪造证书链"], "answer": 0, "why": "攻击者不一定攻破目标本身，而是污染它信任的依赖、构建系统或更新通道，从而进入目标。"},
+          "en": {"q": "What does a supply-chain attack usually mean?", "options": ["Planting malicious code through dependencies, builds or update channels", "Directly breaking RSA", "Using a quantum computer", "Forging a certificate chain"], "answer": 0, "why": "An attacker need not break the target directly; poisoning a trusted dependency, build system or update channel gets them in."}
+        }
+      ]
+    },
+    "d24-theory": {
+      "questions": [
+        {
+          "id": "d24-q1",
+          "zh": {"q": "可证明安全通常使用什么方法？", "options": ["归约", "压缩", "页面渲染", "哈希排序"], "answer": 0, "why": "归约把“攻破方案”转化为“解决某个被认为困难的问题”，从而把安全性建立在困难假设上。"},
+          "en": {"q": "What method is usually used for provable security?", "options": ["Reduction", "Compression", "Page rendering", "Hash sorting"], "answer": 0, "why": "A reduction turns “break the scheme” into “solve a believed-hard problem”, grounding security in a hardness assumption."}
+        },
+        {
+          "id": "d24-q2",
+          "zh": {"q": "计算安全性依赖什么前提？", "options": ["攻击者的计算资源有限", "攻击者拥有无限算力", "信息论绝对安全", "证书永不过期"], "answer": 0, "why": "计算安全允许存在理论攻击，但要求攻击者在现实资源下无法完成；信息论安全则是无条件安全。"},
+          "en": {"q": "What does computational security assume?", "options": ["The attacker has limited computational resources", "The attacker has unlimited power", "Information-theoretic absolute security", "Certificates never expire"], "answer": 0, "why": "Computational security allows theoretical attacks but requires them to be infeasible with realistic resources; information-theoretic security is unconditional."}
+        },
+        {
+          "id": "d24-q3",
+          "zh": {"q": "随机预言机模型把哈希函数理想化成什么？", "options": ["一个真正的随机函数", "一个真实密钥", "一个分组密码", "一个证书"], "answer": 0, "why": "随机预言机模型假设哈希像随机函数一样不可预测；真实哈希不保证这个性质，因此证明只是模型内的保证。"},
+          "en": {"q": "What does the random-oracle model idealise a hash function as?", "options": ["A truly random function", "A real key", "A block cipher", "A certificate"], "answer": 0, "why": "The random-oracle model assumes the hash behaves like an unpredictable random function; real hashes do not guarantee this, so proofs are guarantees within the model."}
+        }
+      ]
+    }
+  }
+}

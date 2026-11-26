@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "note": "只列已经存在的游戏；没有合适游戏的课程不硬凑。",
+  "courses": {
+    "d01-foundations": [
+      {"slug": "codeguess", "title_zh": "猜词破译", "title_en": "Code Guess"},
+      {"slug": "morse", "title_zh": "摩斯破译", "title_en": "Morse Break"}
+    ],
+    "d02-monoalphabetic": [
+      {"slug": "caesar", "title_zh": "凯撒解码", "title_en": "Caesar Decode"},
+      {"slug": "affine", "title_zh": "仿射密码", "title_en": "Affine Cipher"},
+      {"slug": "substitution", "title_zh": "替换密码", "title_en": "Substitution"}
+    ],
+    "d03-polyalphabetic": [
+      {"slug": "vigenere", "title_zh": "维吉尼亚", "title_en": "Vigenère"}
+    ],
+    "d04-transposition": [
+      {"slug": "railfence", "title_zh": "栅栏密码", "title_en": "Rail Fence"},
+      {"slug": "columnar", "title_zh": "列换位密码", "title_en": "Columnar Transposition"}
+    ],
+    "d05-rotor-mechanical": [
+      {"slug": "enigma", "title_zh": "恩尼格玛", "title_en": "Enigma"},
+      {"slug": "purple", "title_zh": "紫密", "title_en": "Purple"},
+      {"slug": "lorenz", "title_zh": "洛伦兹", "title_en": "Lorenz"}
+    ],
+    "d06-otp-stream": [
+      {"slug": "venona", "title_zh": "维诺纳计划", "title_en": "Venona"},
+      {"slug": "xor", "title_zh": "异或破译", "title_en": "XOR Break"}
+    ],
+    "d07-cryptanalysis": [
+      {"slug": "workshop", "title_zh": "密码分析工坊", "title_en": "Cryptanalysis Workshop"},
+      {"slug": "codebreak", "title_zh": "大师密码", "title_en": "Mastermind"}
+    ],
+    "d08-block-ciphers": [
+      {"slug": "aes-lab", "title_zh": "AES 轮函数实验室", "title_en": "AES Round Lab"},
+      {"slug": "block-modes", "title_zh": "块模式实验室", "title_en": "Block Modes Lab"}
+    ],
+    "d09-hashes": [
+      {"slug": "hashlab", "title_zh": "哈希雪崩实验室", "title_en": "Hash Avalanche Lab"}
+    ],
+    "d11-asymmetric": [
+      {"slug": "rsa", "title_zh": "RSA 小素数保险柜", "title_en": "RSA Small-Prime Safe"},
+      {"slug": "dh-handshake", "title_zh": "DH 握手场", "title_en": "DH Handshake"}
+    ],
+    "d12-signatures": [
+      {"slug": "blind-sign", "title_zh": "盲签名", "title_en": "Blind Signature"}
+    ],
+    "d14-protocols-pki": [
+      {"slug": "pgp-mail", "title_zh": "PGP 加密邮件", "title_en": "PGP Mail"},
+      {"slug": "tor-onion", "title_zh": "Tor 洋葱路由", "title_en": "Tor Onion Routing"}
+    ],
+    "d15-zkp": [
+      {"slug": "zkp-cave", "title_zh": "零知识洞穴", "title_en": "ZK Cave"}
+    ],
+    "d16-secret-sharing-mpc": [
+      {"slug": "shamir", "title_zh": "Shamir 分钥密约", "title_en": "Shamir's Secret"},
+      {"slug": "millionaire", "title_zh": "百万富翁协议", "title_en": "Millionaire's Protocol"}
+    ],
+    "d17-side-channel": [
+      {"slug": "side-channel-lab", "title_zh": "侧信道实验室", "title_en": "Side-Channel Lab"}
+    ],
+    "d20-china-sm": [
+      {"slug": "sm4", "title_zh": "SM4 国密试炼场", "title_en": "SM4 Arena"},
+      {"slug": "gm-gateway", "title_zh": "国密网关", "title_en": "GM Gateway"}
+    ],
+    "d21-quantum-crypto": [
+      {"slug": "bb84", "title_zh": "BB84 量子密钥", "title_en": "BB84 Quantum Key"},
+      {"slug": "qkd-sim", "title_zh": "QKD 密钥分发模拟", "title_en": "QKD Simulator"}
+    ],
+    "d22-post-quantum": [
+      {"slug": "pqc-match", "title_zh": "后量子迁移配对", "title_en": "PQC Migration Match"}
+    ],
+    "d23-applied-security": [
+      {"slug": "password-vault", "title_zh": "口令保险库", "title_en": "Password Vault"},
+      {"slug": "totp-verify", "title_zh": "TOTP 双因素验证", "title_en": "TOTP Verify"}
+    ]
+  }
+}
